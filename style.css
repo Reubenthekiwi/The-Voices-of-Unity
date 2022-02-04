@@ -3,4 +3,12 @@ body {
     background-color: #C6D7C7;
 }
 
+.lead {
+    font-size: 1.5em;
+}
+
 /* title */
+#story-button {
+    background-color: #9AB79A;
+    color: white;
+}
