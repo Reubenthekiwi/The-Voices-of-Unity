@@ -23,3 +23,35 @@ h2 {
 #cards-title {
     color: #032b5f;
 }
+
+/* Footer */
+.footer-container {
+    background-color: #d80000;
+}
+.footer {
+    background-color: #d80000;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    width: 80%;
+    height: 40vh;
+}
+.footer-content {
+    display: flex;
+    flex-direction: column;
+}
+.footer-content h2 {
+    margin-bottom: 2rem;
+}
+.footer-content a {
+    color: #eaf9ed;
+    text-decoration: none;
+    margin-bottom: 2rem;
+    transition: 0.3s;
+}
+.footer-content a:hover {
+    color: #ffffdd;
+    transition: 0.3s ease-out;
+}
