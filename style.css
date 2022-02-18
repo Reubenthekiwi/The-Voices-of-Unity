@@ -1,14 +1,25 @@
 /* page's component */
 body {
-    background-color: #C6D7C7;
+    background-color: #ffffff;
 }
 
 .lead {
     font-size: 1.5em;
 }
 
+h1 {
+    color: #b80000;
+}
+h2 {
+    color: #e04242;
+}
+
 /* title */
 #story-button {
-    background-color: #9AB79A;
+    background-color: #d80000;
     color: white;
+}
+
+#cards-title {
+    color: #032b5f;
 }

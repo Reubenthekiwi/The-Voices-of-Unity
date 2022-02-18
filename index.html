@@ -20,18 +20,28 @@
 <body>
     <!-- The page's title -->
     <div id="title" class="jumbotron text-center pt-5">
-        <h1 class="display-1 fw-normal pb-1" style="color: #032b5f;">The Voices of Unity</h1>
+        <h1 class="display-1 fw-normal pb-1">The Voices of Unity</h1>
         <h2 class="lead fw-normal pb-5">Project of Entrepreneur Group 6</h2>
 
-        <p class="p text-center fst-italic px-5 pb-2">
-            First of all, we thank God Almighty for having given us the will from the beginning to create this project until the we finished it. We also thank all our website visitors who want to see our website; we really appreciate it. We also thank our project's supervisors so that this project can be done well.
+        <p class="p text-center fst-italic px-5">
+            First of all, we thank God Almighty for having given us the will from the beginning to create this project until the we finished it. We also thank all our website visitors who want to see our website; we really appreciate it. We also thank our project's supervisors so that this project can be done well. We created this website from the ground up, such as preparing a task list for group members, creating program codes to create a website, designing websites, looking for resources about unity.
         </p>
 
-        <a id="story-button" class="btn text-center btn-lg" href="https://bit.ly/34zZWBV" target="_blank">
+        <a id="story-button" class="btn text-center btn-lg m-5" href="https://bit.ly/34zZWBV" target="_blank">
             Submit Your Story
         </a>
     </div>
 
-    
+    <!-- the cards section -->
+    <h1 class="display-5 fw-normal m-5 text-center">
+        Pengalaman Semangat Kebangsaan
+    </h1>
+    <!-- the script in js/cards.js will handle the creation of new cards -->
+    <div id="cards-container" class="container-fluid">
+        <div id="cards-row" class="row flex-row flex-nowrap m-1" style="overflow-x: auto;"></div>
+    </div><br>
+
+    <!-- our own custom script -->
+    <script src="js/cards.js"></script>
 </body>
 </html>
