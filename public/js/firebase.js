@@ -42,6 +42,7 @@ submitStoryButton.onclick = () => {
     authentication.onAuthStateChanged((user) => {
         if (user) {
             const forumReference = database.collection("forums");
+            const name = document.getElementById("name");
             const experiences = document.getElementById("experiences");
 
             if (experiences.value == "" || experiences.value == null) {
@@ -49,12 +50,12 @@ submitStoryButton.onclick = () => {
             }
 
             let forumInformation = {
-                name: user.displayName,
+                name: name.value,
                 experiences: experiences.value,
             };
 
             forumReference.add({
-                name: user.displayName,
+                name: name.value,
                 experiences: experiences.value,
                 uid: user.uid,
             });
