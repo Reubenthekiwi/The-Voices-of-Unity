@@ -1,5 +1,6 @@
 /* page's component */
 body {
+    font-family: "Be Vietnam Pro", sans-serif;
     background-color: #ffffff;
 }
 
@@ -50,3 +51,5 @@ h2 {
     color: #ffffdd;
     transition: 0.3s ease-out;
 }
+
+/* Responsive breakpoints. */
