@@ -49,16 +49,18 @@
         </div>
 
         <section id="when-signed-out">
-            <button id="sign-in-button" class="btn text-light" type="button"
-                style="margin-left: 60rem; background-color: #d80000;">Sign
+            <button id="sign-in-button" class="btn btn-sm text-right text-light" type="button"
+                style="margin-left: 65vw; background-color: #d80000;">Sign
                 In</button>
         </section>
 
         <section id="when-signed-in" hidden="true">
-            <button id="sign-out-button" class="btn text-light" type="button"
-                style="margin-left: 60rem; background-color: #d80000;">Sign
+            <button id="sign-out-button" class="btn btn-sm text-right text-light" type="button"
+                style="margin-left: 65vw; background-color: #d80000;">Sign
                 Out</button>
         </section>
+
+        <h3 id="greeting-for-signed-in-user"></h3>
 
         <h1 class="display-1 fw-normal pb-1">The Voices of Unity</h1>
         <h2 class="lead fw-normal pb-5">Project of Entrepreneur Group 6</h2>
@@ -163,9 +165,7 @@
                 submitStoryForm.hidden = true;
             }
         };
-    </script>
 
-    <script type="module">
         // Firebase configurations.
         const firebaseConfig = {
             apiKey: "AIzaSyBtY7QWD8j6b5a0AVWRVXno84UY8TQmAJQ",
