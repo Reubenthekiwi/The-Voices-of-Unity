@@ -43,6 +43,18 @@
             </div>
         </div>
 
+        <section id="when-signed-out">
+            <button id="sign-in-button" class="btn text-light" type="button"
+                style="margin-left: 60rem; background-color: #d80000;">Sign
+                In</button>
+        </section>
+
+        <section id="when-signed-in" hidden="true">
+            <button id="sign-out-button" class="btn text-light" type="button"
+                style="margin-left: 60rem; background-color: #d80000;">Sign
+                Out</button>
+        </section>
+
         <h1 class="display-1 fw-normal pb-1">The Voices of Unity</h1>
         <h2 class="lead fw-normal pb-5">Project of Entrepreneur Group 6</h2>
 
@@ -54,15 +66,25 @@
             create a website, designing websites, looking for resources about unity.
         </p>
 
-        <a id="story-button" class="btn text-center btn-lg m-5" href="https://bit.ly/34zZWBV" target="_blank">
+        <button id="story-button" class="btn btn-lg text-center text-light m-5" style="background-color: #d80000;">
             Submit Your Story
-        </a>
+        </button>
+
+        <form id="submit-story-form" hidden="true" style="padding-left: 10rem; padding-right: 10rem;">
+            <div class="form-group">
+                <label>Experiences</label>
+                <input id="experiences" type="text" class="form-control" placeholder="Enter your experiences here">
+            </div>
+            <button id="submit-story-button" type="button" class="btn btn-primary"
+                style="margin-top: 2rem; background-color: #d80000;">Submit</button>
+        </form>
     </div>
 
     <!-- the cards section -->
     <h1 class="display-5 fw-normal m-5 text-center">
         Pengalaman Semangat Kebangsaan
     </h1>
+
     <!-- the script in js/cards.js will handle the creation of new cards -->
     <div id="cards-container" class="container-fluid">
         <div id="cards-row" class="row flex-row flex-nowrap m-1" style="overflow-x: auto;"></div>
@@ -99,8 +121,43 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
         </script>
 
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <script>
+        // Submit your story.
+        const storyButton = document.getElementById("story-button");
+        const submitStoryForm = document.getElementById("submit-story-form");
+
+        storyButton.onclick = () => {
+            if (submitStoryForm.hidden == true) {
+                submitStoryForm.hidden = false;
+            }
+            else {
+                submitStoryForm.hidden = true;
+            }
+        };
+    </script>
+
+    <script type="module">
+        // Firebase configurations.
+        const firebaseConfig = {
+            apiKey: "AIzaSyBtY7QWD8j6b5a0AVWRVXno84UY8TQmAJQ",
+            authDomain: "thevoicesofunity.firebaseapp.com",
+            projectId: "thevoicesofunity",
+            storageBucket: "thevoicesofunity.appspot.com",
+            messagingSenderId: "707798121992",
+            appId: "1:707798121992:web:a4f075df0c80b7407b1bbd"
+        };
+
+        // Initialize Firebase.
+        const app = firebase.initializeApp(firebaseConfig);
+    </script>
+
     <!-- our own custom script -->
-    <script src="js/cards.js"></script>
+    <script src="js/firebase.js" type="module" defer></script>
+    <script src="js/cards.js" type="module" defer></script>
     <script src="js/cookie.js"></script>
 </body>
 
