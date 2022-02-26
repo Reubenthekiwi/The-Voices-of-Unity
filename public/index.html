@@ -30,8 +30,8 @@
         <!-- Switch languages dropdown. -->
         <div class="px-5">
             <div class="btn-group">
-                <button type="button" class="btn text-light dropdown-toggle" id="lang-choice" data-bs-toggle="dropdown"
-                    aria-expanded="false" style="background-color: #d80000">
+                <button id="language-choice-dropdown" type="button" class="btn text-light dropdown-toggle"
+                    id="lang-choice" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #d80000">
                     Language
                 </button>
                 <ul class="dropdown-menu">
@@ -57,12 +57,10 @@
                 Out</button>
         </section>
 
-        <h3 id="greeting-for-signed-in-user"></h3>
-
         <h1 class="display-1 fw-normal pb-1">The Voices of Unity</h1>
         <h2 class="lead fw-normal pb-5">Project of Entrepreneur Group 6</h2>
 
-        <p class="p text-center fst-italic px-5">
+        <p id="introduction" class="p text-center fst-italic px-5">
             First of all, we thank God Almighty for having given us the will from the beginning to create this project
             until the we finished it. We also thank all our website visitors who want to see our website; we really
             appreciate it. We also thank our project's supervisors so that this project can be done well. We created
@@ -70,7 +68,7 @@
             create a website, designing websites, looking for resources about unity.
         </p>
 
-        <p class="p text-center fst-italic px-5">
+        <p id="synopsis" class="p text-center fst-italic px-5">
             We make an outline project planning for 2 weeks, after we determine the project we will make, the web
             graphic designer
             team for 1 week. Then continued by the web developer team and project manager in the process of creating a
@@ -86,7 +84,8 @@
             common strength.
         </p>
 
-        <button id="story-button" class="btn btn-lg text-center text-light m-5" style="background-color: #d80000;">
+        <button id="submit-your-story-button" class="btn btn-lg text-center text-light m-5"
+            style="background-color: #d80000;">
             Submit Your Story
         </button>
 
@@ -106,8 +105,8 @@
     </div>
 
     <!-- the cards section -->
-    <h1 class="display-5 fw-normal m-5 text-center">
-        Stories About National Untity
+    <h1 id="cards-section-introduction" class="display-5 fw-normal m-5 text-center">
+        Stories About National Unity
     </h1>
 
     <!-- the script in js/cards.js will handle the creation of new cards -->
@@ -152,10 +151,10 @@
 
     <script>
         // Submit your story.
-        const storyButton = document.getElementById("story-button");
+        const submitYourStoryButton = document.getElementById("submit-your-story-button");
         const submitStoryForm = document.getElementById("submit-story-form");
 
-        storyButton.onclick = () => {
+        submitYourStoryButton.onclick = () => {
             if (submitStoryForm.hidden == true) {
                 submitStoryForm.hidden = false;
             }
@@ -181,7 +180,12 @@
     <!-- our own custom script -->
     <script src="js/firebase.js" type="module" defer></script>
     <script src="js/cards.js" type="module" defer></script>
+    <script src="js/language.js"></script>
     <script src="js/cookie.js"></script>
+
+    <script>
+        setLanguage();
+    </script>
 </body>
 
 </html>
