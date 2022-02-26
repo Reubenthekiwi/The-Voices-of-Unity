@@ -45,8 +45,16 @@ submitStoryButton.onclick = () => {
             const name = document.getElementById("name");
             const experiences = document.getElementById("experiences");
 
+            if (name.value == "" || name.value == null) {
+                alert("Your name cannot be empty!");
+
+                return;
+            }
+
             if (experiences.value == "" || experiences.value == null) {
                 alert("Your experiences cannot be empty!");
+
+                return;
             }
 
             let forumInformation = {
