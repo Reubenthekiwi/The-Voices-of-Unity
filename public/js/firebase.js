@@ -35,15 +35,16 @@ authentication.onAuthStateChanged((user) => {
 
 // Database.
 const database = firebase.firestore();
+const forumReference = database.collection("forums");
+
 const submitStoryForm = document.getElementById("submit-story-form");
 const submitStoryButton = document.getElementById("submit-story-button");
 
 submitStoryButton.onclick = () => {
     authentication.onAuthStateChanged((user) => {
         if (user) {
-            const forumReference = database.collection("forums");
             const name = document.getElementById("name");
-            const experiences = document.getElementById("experiences");
+            const stories = document.getElementById("stories");
 
             if (name.value == "" || name.value == null) {
                 alert("Your name cannot be empty!");
@@ -51,27 +52,24 @@ submitStoryButton.onclick = () => {
                 return;
             }
 
-            if (experiences.value == "" || experiences.value == null) {
-                alert("Your experiences cannot be empty!");
+            if (stories.value == "" || stories.value == null) {
+                alert("Your stories cannot be empty!");
 
                 return;
             }
 
-            let forumInformation = {
-                name: name.value,
-                experiences: experiences.value,
-            };
-
             forumReference.add({
                 name: name.value,
-                experiences: experiences.value,
+                stories: stories.value,
                 uid: user.uid,
             });
 
-            let stories = [];
-            stories = Object.values(forumInformation);
+            const storiesData = Object.values({
+                name: name.value,
+                stories: stories.value,
+            });
 
-            createCards(stories);
+            createCards(storiesData);
 
             submitStoryForm.reset();
         } else {
@@ -83,19 +81,12 @@ submitStoryButton.onclick = () => {
 };
 
 function readDataAndCreateCards() {
-    const forumReference = database.collection("forums");
-
-    let forumInformation = {};
-
     forumReference.get().then((querySnapshot) => {
         querySnapshot.docs.map((document) => {
-            forumInformation = {
+            const stories = Object.values({
                 names: document.data().name,
-                experiences: document.data().experiences,
-            };
-
-            let stories = [];
-            stories = Object.values(forumInformation);
+                stories: document.data().stories,
+            });
 
             createCards(stories);
         });
