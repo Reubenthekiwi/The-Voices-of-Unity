@@ -45,7 +45,7 @@ export function createCards(stories) {
     cardTitle.textContent = stories[0];
 
     // and the main content itself
-    var cardContent = document.createElement("p");
+    var cardContent = document.createElement("pre");
     cardContent.style.overflowY = "hidden";
     cardContent.textContent = stories[1];
 
