@@ -42,42 +42,42 @@ const submitStoryButton = document.getElementById("submit-story-button");
 
 authentication.onAuthStateChanged((user) => {
     submitStoryButton.onclick = () => {
-        if (user) {
-            const name = document.getElementById("name");
-            const stories = document.getElementById("stories");
-
-            if (!name.value) {
-                alert("Your name cannot be empty!");
-
-                return;
-            }
-
-            if (!stories.value) {
-                alert("Your stories cannot be empty!");
-
-                return;
-            }
-
-            forumReference.add({
-                name: name.value,
-                stories: stories.value,
-                uid: user.uid,
-                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            });
-
-            const storiesData = Object.values({
-                name: name.value,
-                stories: stories.value,
-            });
-
-            createCards(storiesData);
-
-            submitStoryForm.reset();
-        } else {
-            alert("Please sign in with your Google account.");
-
+        if (!user) {
             signIn();
+
+            return;
         }
+
+        const name = document.getElementById("name");
+        const stories = document.getElementById("stories");
+
+        if (!name.value) {
+            alert("Your name cannot be empty!");
+
+            return;
+        }
+
+        if (!stories.value) {
+            alert("Your stories cannot be empty!");
+
+            return;
+        }
+
+        forumReference.add({
+            name: name.value,
+            stories: stories.value,
+            uid: user.uid,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        });
+
+        const storiesData = Object.values({
+            name: name.value,
+            stories: stories.value,
+        });
+
+        createCards(storiesData);
+
+        submitStoryForm.reset();
     };
 });
 
