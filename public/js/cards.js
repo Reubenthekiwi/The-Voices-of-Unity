@@ -1,63 +1,64 @@
-// script to handle the "Pengalaman Teman Kita" cards :)
+// Script to handle the "Pengalaman Teman Kita" cards :)
 
-// the main story container row
-const CARDS_CONTAINTER = document.getElementById("cards-container");
-var STORY_CONTAINER_ROW = document.getElementById("cards-row");
+// The main story container row.
+const cardsContainer = document.getElementById("cards-container");
+let storyContainerRow = document.getElementById("cards-row");
 
-// variables
-var cardsCount = 0;
+let cardsCount = 0;
 
-// the holy function to do this all
+// The holy function to do this all.
 export function createCards(stories) {
-    // make a new row for every 3 cards
+    // Make a new row for every 3 cards.
     if (cardsCount % 3 == 0) {
-        // create the row
-        var row = document.createElement("div");
-        var currentID = "cards-row".concat(cardsCount / 3);
-        row.id = currentID;
+        // Create the row.
+        const row = document.createElement("div");
+        const currentId = "cards-row".concat(cardsCount / 3);
+        row.id = currentId;
         row.className = "row flex-row flex-nowrap m-1";
         row.style.overflowX = "auto";
 
-        CARDS_CONTAINTER.appendChild(row);
-        STORY_CONTAINER_ROW = document.getElementById(currentID);
+        cardsContainer.appendChild(row);
+        storyContainerRow = document.getElementById(currentId);
     }
 
-    //create the column
-    var col = document.createElement("div");
-    // make the column responsive for extra small, small, medium, large, and extra large screens
-    col.className = "col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4";
-    col.style.maxHeight = "300px";
-    col.style.overflowY = "auto";
+    // Create the column.
+    const column = document.createElement("div");
+    // Make the column responsive for extra small, small, medium, large, and extra large screens.
+    column.className = "col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4";
+    column.style.maxHeight = "300px";
+    column.style.overflowY = "auto";
 
-    // create the new card
-    var newCard = document.createElement("div");
+    // Create the new card.
+    const newCard = document.createElement("div");
     newCard.className = "card my-4";
 
-    // create the container for the card's contents
-    var contentContainter = document.createElement("div");
+    // Create the container for the card's contents.
+    const contentContainter = document.createElement("div");
     contentContainter.style.margin = "5%";
 
-    // the card's title
-    var cardTitle = document.createElement("h2");
+    // The card's title.
+    const cardTitle = document.createElement("h2");
     cardTitle.className = "card-title text-nowrap text-justify";
     cardTitle.style.overflowX = "auto";
     cardTitle.style.overflowY = "hidden";
     cardTitle.textContent = stories[0];
 
-    // and the main content itself
-    var cardContent = document.createElement("pre");
+    // And the main content itself.
+    const cardContent = document.createElement("pre");
     cardContent.style.overflowY = "hidden";
     cardContent.textContent = stories[1];
 
-    // appending children to the contentContainer
+    // Appending children to the contentContainer.
     contentContainter.appendChild(cardTitle);
     contentContainter.appendChild(document.createElement("hr"));
     contentContainter.appendChild(cardContent);
-    // appending child to the newCard and col
+
+    // Appending child to the newCard and column.
     newCard.appendChild(contentContainter);
-    col.appendChild(newCard);
-    // finish it all by adding the new column to the story container row
-    STORY_CONTAINER_ROW.appendChild(col);
+    column.appendChild(newCard);
+
+    // Finish it all by adding the new column to the story container row.
+    storyContainerRow.appendChild(column);
 
     cardsCount++;
 }
