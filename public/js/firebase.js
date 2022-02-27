@@ -40,19 +40,19 @@ const forumReference = database.collection("forums");
 const submitStoryForm = document.getElementById("submit-story-form");
 const submitStoryButton = document.getElementById("submit-story-button");
 
-submitStoryButton.onclick = () => {
-    authentication.onAuthStateChanged((user) => {
+authentication.onAuthStateChanged((user) => {
+    submitStoryButton.onclick = () => {
         if (user) {
             const name = document.getElementById("name");
             const stories = document.getElementById("stories");
 
-            if (name.value == "" || name.value == null) {
+            if (!name.value) {
                 alert("Your name cannot be empty!");
 
                 return;
             }
 
-            if (stories.value == "" || stories.value == null) {
+            if (!stories.value) {
                 alert("Your stories cannot be empty!");
 
                 return;
@@ -62,6 +62,7 @@ submitStoryButton.onclick = () => {
                 name: name.value,
                 stories: stories.value,
                 uid: user.uid,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
             });
 
             const storiesData = Object.values({
@@ -77,20 +78,23 @@ submitStoryButton.onclick = () => {
 
             signIn();
         }
-    });
-};
+    };
+});
 
 function readDataAndCreateCards() {
-    forumReference.get().then((querySnapshot) => {
-        querySnapshot.docs.map((document) => {
-            const stories = Object.values({
-                names: document.data().name,
-                stories: document.data().stories,
-            });
+    forumReference
+        .orderBy("createdAt")
+        .get()
+        .then((querySnapshot) => {
+            querySnapshot.docs.map((document) => {
+                const storiesData = Object.values({
+                    names: document.data().name,
+                    stories: document.data().stories,
+                });
 
-            createCards(stories);
+                createCards(storiesData);
+            });
         });
-    });
 }
 
 document.addEventListener("DOMContentLoaded", readDataAndCreateCards);
