@@ -45,7 +45,8 @@ export function createCards(stories) {
 
     // And the main content itself.
     const cardContent = document.createElement("pre");
-    cardContent.style.overflowY = "hidden";
+    cardContent.style.overflowX = "hidden";
+    cardContent.style.whiteSpace = "pre-wrap";
     cardContent.textContent = stories[1];
 
     // Appending children to the contentContainer.
