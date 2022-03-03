@@ -35,7 +35,7 @@ authentication.onAuthStateChanged((user) => {
 
 // Database.
 const database = firebase.firestore();
-const forumReference = database.collection("forums");
+const forumsReference = database.collection("forums");
 
 const submitStoryForm = document.getElementById("submit-story-form");
 const submitStoryButton = document.getElementById("submit-story-button");
@@ -63,7 +63,7 @@ authentication.onAuthStateChanged((user) => {
             return;
         }
 
-        forumReference.add({
+        forumsReference.add({
             name: name.value,
             stories: stories.value,
             uid: user.uid,
@@ -82,7 +82,7 @@ authentication.onAuthStateChanged((user) => {
 });
 
 function readDataAndCreateCards() {
-    forumReference
+    forumsReference
         .orderBy("createdAt")
         .get()
         .then((querySnapshot) => {

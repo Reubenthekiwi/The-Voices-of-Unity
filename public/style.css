@@ -1,4 +1,4 @@
-/* page's component */
+/* Page's component. */
 body {
     font-family: "Open Sans", sans-serif;
     background-color: #ffffff;
@@ -20,12 +20,20 @@ h2 {
     color: #e04242;
 }
 
-/* title */
+/* Title. */
 #cards-title {
     color: #032b5f;
 }
 
-/* Footer */
+.art-container {
+    height: 500px;
+    padding-top: 2rem;
+
+    display: flex;
+    justify-content: center;
+}
+
+/* Footer. */
 .footer-container {
     background-color: #d80000;
 }
@@ -57,4 +65,11 @@ h2 {
     transition: 0.3s ease-out;
 }
 
-/* Responsive breakpoints. */
+/* Responsive breakpoint. */
+
+/* Smaller size. */
+@media screen and (max-width: 600px) {
+    .art-container {
+        height: 200px;
+    }
+}
